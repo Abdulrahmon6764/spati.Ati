@@ -1,0 +1,83 @@
+*{
+    padding: none;
+    margin: none;
+    list-style-type: none;
+    box-sizing: border-box;
+}
+
+.backhome_button{
+    margin-top: 80px;
+}
+
+.backhome_button button{
+    padding: 10px 15px 10px 15px;
+    border: none;
+    background-color: rgba(243, 189, 169, 0.5);
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.titl h1 {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 55px;
+    text-align: center;
+  }
+
+  .head_result h2{
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    text-align: center;
+  
+  }
+
+  .dev_result_one{
+    /* width:5%; */
+    background-color: rgba(243, 189, 169, 0.5);
+    /* margin-left: 550px; */
+   padding-top: 30px;
+   padding-bottom: 20px;
+   border-radius: 20px;
+  }
+
+  .dev_result_one h1{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+    
+  .dev_result_one p{
+    text-align: center;
+   font-size: 20px;
+   font-weight: 400;
+  }
+
+  .result_button .buttone{
+    /* margin-left: 20px;
+    margin-right: 20px; */
+    padding: 12px 90px 12px 90px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgb(2, 186, 2);
+    color: white;
+    font-size: 20px;
+  }
+   
+  .result_button .buttontwo{
+    padding: 12px 70px 12px 70px;
+    margin-left: 10px;
+    border: 2px solid rgb(247, 108, 57);
+    border-radius: 30px;
+    background-color: rgba(243, 189, 169, 0.5);
+    /* color: white; */
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .result_button{
+    text-align: center;
+  }
+
+  .dev_result_one .backColo{
+  
+  }
+

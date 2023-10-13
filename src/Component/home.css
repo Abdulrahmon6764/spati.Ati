@@ -1,0 +1,272 @@
+* {
+  padding: none;
+  margin: none;
+  box-sizing: border-box;
+}
+
+.title h1 {
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 55px;
+}
+
+.desc p {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.desc_texts span {
+  border: 1px solid orangered;
+  padding: 10px 10px 10px 10px;
+  border-radius: 50%;
+}
+
+.dev_button input[type="text"] {
+  display: block;
+  margin-top: 15px;
+  margin-left: 45px;
+  padding: 15px 385px 15px 20px;
+  background-color: rgba(243, 189, 169, 0.5);
+  border: 2px solid rgb(247, 108, 57);
+  /* border-color: rgb(247, 108, 57); */
+  border-radius: 20px;
+  outline: none;
+}
+
+.dev_button input[type="button"] {
+  display: block;
+  margin-top: 15px;
+  margin-left: 70px;
+  padding: 15px 220px 15px 220px;
+  border-radius: 20px;
+  border: none;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  background-image: linear-gradient(to right, yellow, rgba(255, 68, 0, 0.938));
+}
+
+.dev_button button {
+  margin-left: 50px;
+  padding: 8px 27px 8px 27px;
+  border: 1px solid rgba(243, 189, 169, 0.5);
+  background-color: rgba(243, 189, 169, 0.5);
+  border-radius: 20px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+}
+
+.dev_button {
+  position: relative;
+}
+
+.dev_button .locationIcon {
+  display: none;
+}
+.frm_searc_location .head_text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+.dev_form {
+  display: flex;
+  justify-content: center;
+}
+
+.search_dev_form {
+  display: flex;
+  justify-content: center;
+}
+
+.button_dev button {
+  margin-left: 50px;
+  margin-bottom: 20px;
+  padding: 7px 15px 7px 15px;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: rgba(243, 189, 169, 0.5);
+  border-radius: 20px;
+}
+
+.button_dev input {
+  padding: 15px 285px 15px 5px;
+  border-radius: 20px;
+  background-color: rgba(243, 189, 169, 0.5);
+  border: 2px solid rgb(247, 108, 57);
+  outline: none;
+}
+
+.button_dev .inpu {
+  margin-left: 65px;
+  position: relative;
+}
+
+/* .button_dev button:active button::after {
+  background-color: orangered;
+} */
+
+.inpu button {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  margin-top: 5px;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.search_dev_form .formm {
+  background-color: rgba(243, 189, 169, 0.5);
+  padding-right: 133px;
+  padding-bottom: 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.dev_form .frm_searc_location {
+  background-color: rgba(243, 189, 169, 0.5);
+  padding-right: 40px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.dev_button #fa_solid_Icon{
+  position: absolute;
+  bottom: 15px;
+  left: 260px;
+  color: white;
+  font-size: 20px;
+}
+
+.find_now_bitton {
+  text-align: center;
+}
+
+.find_now_bitton button {
+  padding: 10px 95px 10px 95px;
+  border-radius: 20px;
+  font-size: 17px;
+  font-family:'Times New Roman', Times, serif;
+  color: white;
+  background-color: rgb(183, 150, 150);
+  border: 1px solid rgb(183, 150, 150);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.contact_form div {
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+.name_input input {
+  padding: 17px 95px 17px 14px;
+  border: 2px solid rgb(173, 69, 173);
+  background-color: rgba(243, 189, 169, 0.5);
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 10px;
+  outline: none;
+}
+
+.name_input {
+  margin-right: 45px;
+}
+
+.name_input label {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 200px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.email_input input {
+  padding: 17px 95px 17px 14px;
+  border: 2px solid rgb(173, 69, 173);
+  background-color: rgba(243, 189, 169, 0.5);
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 10px;
+  outline: none;
+}
+
+.email_input label {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 200px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.contact_form {
+  text-align: center;
+}
+
+.contact_form textarea {
+  border: 2px solid rgb(173, 69, 173);
+  background-color: rgba(243, 189, 169, 0.5);
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 15px 0 0 25px;
+  outline: none;
+}
+
+.contact_form .textarea_label {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 490px;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.contact_form {
+  background-image: linear-gradient(to right, yellow, rgba(255, 68, 0, 0.938));
+  padding-top: 20px;
+  padding-bottom: 35px;
+}
+
+.contact_form button {
+  padding: 12px 100px 12px 100px;
+  background-color: white;
+  border: 2px solid white;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.modal_buttons button[type="submit"]{
+    margin-left: 25px;
+    padding: 7px 15px 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    border: none;
+  background-color: rgba(243, 189, 169, 0.5);
+}
+
+.modall-footer{
+  text-align: center;
+padding-bottom: 35px;
+}
+
+.modall-footer button{
+  padding: 7px 55px 10px 55px;
+  border-radius: 20px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-image: linear-gradient(to right, yellow, rgba(255, 68, 0, 0.938));
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+}
