@@ -30,17 +30,63 @@ function Home() {
 
   const [inputTy, setInputTy] = useState("text");
 
+  const [specialProBackColo, setspecialProBackColo] = useState({
+    specialBackGroundColor: "",
+    specialColo: "",
+  });
+
+  const [shopTwentyBackColo, setshopTwentyProBackColo] = useState({
+    shopTwentyBackGroundColor: "",
+    shopTwentyColo: "",
+  });
+
+  const [vendingBackColo, setvendingBackColo] = useState({
+    vendingBackGroundColor: "",
+    vendingColo: "",
+  });
+
   const [locationIcon, setLocationIcon] = useState("");
 
-  // const myInputRef = useRef();
 
-  // const buttonRef = useRef()
+  const [filterbitton, setfilterbitton] = useState({
+    backGroundColor: "",
+    Colo: "",
+    borderr: "",
+  });
+
+  const [value, setValue] = useState("");
+
+  const buttonReff = useRef(null);
+
+  const inputHandler = (e) => {
+    const value = e.target.value;
+    setValue(value);
+
+    if (value.trim() !== "") {
+      setfilterbitton({
+        backGroundColor: "orangered",
+        Colo: "white",
+        borderr: "none",
+      });
+    } else {
+      setfilterbitton({ backGroundColor: "", Colo: "", borderr: "" });
+    }
+  };
 
   const vendingManchine = (e) => {
     e.preventDefault();
     if (inputTy === "text") {
       setInputTy("text");
       setPlacehold("Snacks, Cigarettes, Drinks, etc");
+      setspecialProBackColo({ specialBackGroundColor: "", specialColo: "" });
+      setshopTwentyProBackColo({
+        shopTwentyBackGroundColor: "",
+        shopTwentyColo: "",
+      });
+      setvendingBackColo({
+        vendingBackGroundColor: "orangered",
+        vendingColo: "white",
+      });
       console.log(true);
     }
   };
@@ -50,6 +96,15 @@ function Home() {
     if (inputTy === "text") {
       setInputTy("text");
       setPlacehold("Iced Tea Peach, etc");
+      setspecialProBackColo({
+        specialBackGroundColor: "orangered",
+        specialColo: "white",
+      });
+      setshopTwentyProBackColo({
+        shopTwentyBackGroundColor: "",
+        shopTwentyColo: "",
+      });
+      setvendingBackColo({ vendingBackGroundColor: "", vendingColo: "" });
       console.log(true);
     }
   };
@@ -59,16 +114,33 @@ function Home() {
     if (inputTy === "text") {
       setInputTy("text");
       setPlacehold("24/7 Store");
+      setspecialProBackColo({ specialBackGroundColor: "", specialColo: "" });
+      setshopTwentyProBackColo({
+        shopTwentyBackGroundColor: "orangered",
+        shopTwentyColo: "white",
+      });
+      setvendingBackColo({ vendingBackGroundColor: "", vendingColo: "" });
     }
   };
 
-  // const handleLocationIcon = () => {
-  //   if(myInputRef == buttonRef){
-  //     console.log(myInputRef)
-  //     console.log(buttonRef)
-  //   }
+  const filterButton = (e) => {
+    e.preventDefault();
+  };
 
-  // };
+  const LocationinputHandler = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    if (value.trim() !== "") {
+      setfilterbitton({
+        backGroundColor: "orangered",
+        Colo: "white",
+        borderr: "none",
+      });
+    } else {
+      setfilterbitton({ backGroundColor: "", Colo: "", borderr: "" });
+    }
+  };
 
   const AddressEventHandler = (e) => {
     e.preventDefault();
@@ -139,10 +211,6 @@ function Home() {
     }
   };
 
-  const filterButton = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div>
       <div className="title">
@@ -201,6 +269,7 @@ function Home() {
               type={inputType}
               placeholder={inputPlaceholder}
               value={inputValue}
+              onInput={LocationinputHandler}
             />
             <i className={`fa-solid ${locationIcon}`} id="fa_solid_Icon"></i>
           </div>
@@ -229,17 +298,43 @@ function Home() {
       <div className="search_dev_form">
         <form className="formm">
           <div className="button_dev">
-            <button onClick={vendingManchine} type="submit">
+            <button
+              onClick={vendingManchine}
+              type="submit"
+              style={{
+                backgroundColor: `${vendingBackColo.vendingBackGroundColor}`,
+                color: `${vendingBackColo.vendingColo}`,
+              }}
+            >
               Vending Manchine
             </button>
-            <button onClick={specialProduct} type="submit">
+            <button
+              onClick={specialProduct}
+              type="submit"
+              style={{
+                backgroundColor: `${specialProBackColo.specialBackGroundColor}`,
+                color: `${specialProBackColo.specialColo}`,
+              }}
+            >
               Special Product
             </button>
-            <button onClick={shopTwentyFourSeven} type="submit">
+            <button
+              onClick={shopTwentyFourSeven}
+              type="submit"
+              style={{
+                backgroundColor: `${shopTwentyBackColo.shopTwentyBackGroundColor}`,
+                color: `${shopTwentyBackColo.shopTwentyColo}`,
+              }}
+            >
               24/7 Shop
             </button>
             <div className="inpu">
-              <input type={inputTy} placeholder={placehold} />{" "}
+              <input
+                type={inputTy}
+                placeholder={placehold}
+                value={value}
+                onInput={inputHandler}
+              />{" "}
               <button
                 onClick={filterButton}
                 type="submit"
@@ -261,7 +356,15 @@ function Home() {
       <br></br>
 
       <div className="find_now_bitton">
-        <button type="submit">
+        <button
+          type="submit"
+          ref={buttonReff}
+          style={{
+            backgroundColor: `${filterbitton.backGroundColor}`,
+            color: `${filterbitton.Colo}`,
+            border: `${filterbitton.borderr}`,
+          }}
+        >
           <Link
             style={{ textDecoration: "none", color: "white" }}
             to="/results"
@@ -362,6 +465,9 @@ function Home() {
               </div>
             </div>
           </div>
+        </div>
+        <div>
+          <input type="text" />
         </div>
       </div>
     </div>
