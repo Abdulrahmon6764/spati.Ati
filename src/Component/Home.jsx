@@ -1,6 +1,8 @@
 import "./home.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [title, SetTitle] = useState("spati.At");
@@ -46,7 +48,6 @@ function Home() {
   });
 
   const [locationIcon, setLocationIcon] = useState("");
-
 
   const [filterbitton, setfilterbitton] = useState({
     backGroundColor: "",
@@ -211,6 +212,193 @@ function Home() {
     }
   };
 
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [errors, setErros] = useState({
+    nameErr: "",
+    emailErr: "",
+    messageErr: "",
+  });
+
+  const submitFormData = async (e) => {
+    e.preventDefault();
+
+    const newErrors = {
+      nameErr: "",
+      emailErr: "",
+      messageErr: "",
+    };
+
+    if (user.email.trim() === "") {
+      newErrors.emailErr = "Field must not be empty";
+    } else if (!user.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      newErrors.emailErr = "Invalid email address";
+    }
+
+    if (user.name.trim() === "") {
+      newErrors.nameErr = "Field must not be empty";
+    }
+    //  else if(! /^[A-Z]+$/.test(user.name)){
+    //     newErrors.nameErr = "Name must contain uppercase alphabet letters only"
+    //  }
+
+    if (user.message.trim() === "") {
+      newErrors.messageErr = "Field must not be empty";
+    }
+
+    setErros(newErrors);
+    if (!newErrors.nameErr && !newErrors.emailErr && !newErrors.messageErr) {
+      try {
+        await axios
+          .post("http://localhost:8070/sendmesage", user)
+          .then((res) => console.log(res));
+      } catch (error) {
+        console.log(error);
+      }
+
+      setErros({
+        nameErr: "",
+        emailErr: "",
+        messageErr: "",
+      });
+
+      alert("message sent successfully");
+    }
+  };
+  console.log(errors);
+
+  const [modalbutton, setModalbutton] = useState({
+    backgroundColo: "",
+  });
+
+  const [snacksvalue, setsnacksvalue] = useState("Snacks");
+
+  const handlesnacksbutton = () => {
+    if (modalbutton.backgroundColo === "") {
+      setModalbutton({ backgroundColo: "orangered" });
+      console.log(true);
+    } else {
+      setModalbutton({ backgroundColo: "" });
+      console.log(false);
+    }
+  };
+
+  const [valueCigarettes, setvalueCigarettes] = useState("Cigarettes");
+
+  const [backgcCigarettes, setbackgcCigarettes] = useState({
+    backgroundColo: "",
+  });
+
+  const handleCigarettesbutton = () => {
+    if (backgcCigarettes.backgroundColo === "") {
+      setbackgcCigarettes({ backgroundColo: "orangered" });
+    } else {
+      setbackgcCigarettes({ backgroundColo: "" });
+    }
+  };
+
+  const [drinksvalue, setdrinksvalue] = useState("Drinks");
+
+  const [backColodrinks, setbackColodrinks] = useState({
+    backgroundColo: "",
+  });
+
+  const handleDrinksbutton = () => {
+    if (backColodrinks.backgroundColo === "") {
+      setbackColodrinks({ backgroundColo: "orangered" });
+    } else {
+      setbackColodrinks({ backgroundColo: "" });
+    }
+  };
+
+  const [sweetsvalue, setsweetsvalue] = useState("Sweets");
+
+  const [backColsweets, setbackColsweets] = useState({
+    backgroundColo: "",
+  });
+
+  const handleSweetsbutton = () => {
+    if (backColsweets.backgroundColo === "") {
+      setbackColsweets({ backgroundColo: "orangered" });
+    } else {
+      setbackColsweets({ backgroundColo: "" });
+    }
+  };
+
+  const [coffeValue, setcoffeValue] = useState("Coffe");
+
+  const [backColCoffe, setbackColCoffe] = useState({
+    backgroundColo: "",
+  });
+
+  const handleCoffebutton = () => {
+    if (backColCoffe.backgroundColo === "") {
+      setbackColCoffe({ backgroundColo: "orangered" });
+    } else {
+      setbackColCoffe({ backgroundColo: "" });
+    }
+  };
+
+  const [sodaValue, setsodaValue] = useState("Soda");
+
+  const [backColSoda, setbackColSoda] = useState({
+    backgroundColo: "",
+  });
+
+  const handleSodabutton = () => {
+    if (backColSoda.backgroundColo === "") {
+      setbackColSoda({ backgroundColo: "orangered" });
+    } else {
+      setbackColSoda({ backgroundColo: "" });
+    }
+  };
+
+  const [bakesValue, setbakesValue] = useState("Bakes");
+
+  const [backColBakes, setbackColBakes] = useState({
+    backgroundColo: "",
+  });
+
+  const handleBakesbutton = () => {
+    if (backColBakes.backgroundColo === "") {
+      setbackColBakes({ backgroundColo: "orangered" });
+      bakesValue;
+    } else {
+      setbackColBakes({ backgroundColo: "" });
+    }
+  };
+
+  //  const [dismismodal, setdismismodal]  =  useState(data-bs-dismiss)
+
+  const [modalDismisButton, setmodalDismisButton] = useState("modal");
+
+  const handledismissbutoon = () => {
+    if (modalDismisButton) {
+      setbackColBakes({ backgroundColo: "" });
+      setbackColSoda({ backgroundColo: "" });
+      setbackColCoffe({ backgroundColo: "" });
+      setbackColsweets({ backgroundColo: "" });
+      setbackColodrinks({ backgroundColo: "" });
+      setbackgcCigarettes({ backgroundColo: "" });
+      setModalbutton({ backgroundColo: "" });
+    }
+  };
+
+  const Navigate = useNavigate();
+
+  const handlemodalbuttton = () => {
+    if (backColBakes.backgroundColo === "orangered") {
+      setValue(value + bakesValue + " ");
+    }
+    if (backColSoda.backgroundColo === "orangered") {
+      setValue(value + sodaValue + " ");
+    }
+  };
+
   return (
     <div>
       <div className="title">
@@ -235,6 +423,7 @@ function Home() {
                 backgroundColor: `${postBackColor.postBackGroundColo}`,
                 color: `${postBackColor.postColo}`,
               }}
+              className="postcode_button"
             >
               <i class="fa-solid fa-location-dot"></i> Post Code
             </button>
@@ -246,6 +435,7 @@ function Home() {
                 backgroundColor: `${addressBackColor.addBackGroundColo}`,
                 color: `${addressBackColor.addColo}`,
               }}
+              className="address_button"
             >
               <i class="fa-solid fa-location-dot"></i> Address
             </button>
@@ -305,6 +495,7 @@ function Home() {
                 backgroundColor: `${vendingBackColo.vendingBackGroundColor}`,
                 color: `${vendingBackColo.vendingColo}`,
               }}
+              className="vendindM_button"
             >
               Vending Manchine
             </button>
@@ -315,6 +506,7 @@ function Home() {
                 backgroundColor: `${specialProBackColo.specialBackGroundColor}`,
                 color: `${specialProBackColo.specialColo}`,
               }}
+              className="specialP_button"
             >
               Special Product
             </button>
@@ -325,6 +517,7 @@ function Home() {
                 backgroundColor: `${shopTwentyBackColo.shopTwentyBackGroundColor}`,
                 color: `${shopTwentyBackColo.shopTwentyColo}`,
               }}
+              className="twenty-four_button"
             >
               24/7 Shop
             </button>
@@ -377,7 +570,7 @@ function Home() {
       <br></br>
 
       <div className="dev_contact_form">
-        <form className="contact_form">
+        <form className="contact_form" onSubmit={submitFormData}>
           <p
             style={{
               textAlign: "center",
@@ -386,34 +579,60 @@ function Home() {
             }}
           >
             {" "}
-            <h2>Contact Us</h2>
+            <h2 style={{ fontSize: "15px" }}>Contact Us</h2>
           </p>
-          <div className="name_input">
-            <label>Name</label>
-            <br></br>
-            <br></br>
-            <input type="text" placeholder="Your name here" />
+          <div className="t-inpu-el" id="inpu-devv">
+            <label>
+              Name<br></br>
+              <input
+                type="text"
+                name="name"
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
+                placeholder="Your name here"
+              />
+              <p className="text-danger" style={{ fontWeight: "bold" }}>
+                {errors.nameErr}
+              </p>
+            </label>
+
+            <label>
+              Email<br></br>
+              <input
+                type="text"
+                name="email"
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                placeholder="Your email"
+              />
+              <p className="text-danger" style={{ fontWeight: "bold" }}>
+                {errors.emailErr}
+              </p>
+            </label>
           </div>
 
-          <div className="email_input">
-            <label>Email</label>
+          <br></br>
+
+          <div className="textare-dev">
+            <label className="textarea_label">Message</label>
             <br></br>
-            <br></br>
-            <input type="email" placeholder="Your email" />
+            <textarea
+              placeholder="Write here"
+              id=""
+              cols="50"
+              rows="8"
+              name="message"
+              onChange={(e) => setUser({ ...user, message: e.target.value })}
+            ></textarea>
+            <p className="text-danger" style={{ fontWeight: "bold" }}>
+              {errors.messageErr}
+            </p>
           </div>
-          <br></br>
-          <label className="textarea_label">Message</label>
-          <br></br>
-          <br></br>
-          <textarea
-            placeholder="Write here"
-            id=""
-            cols="62"
-            rows="8"
-          ></textarea>
+
           <br></br>
           <br></br>
-          <button type="submit">Send</button>
+
+          <div className="con-form-button">
+            <button type="submit">Send</button>
+          </div>
         </form>
       </div>
 
@@ -447,21 +666,87 @@ function Home() {
               </div>
               <div class="modal-body">
                 <div className="modal_buttons">
-                  <button type="submit">Snacks</button>
-                  <button type="submit">Cigarettes</button>
-                  <button type="submit">Drinks</button>
-                  <button type="submit">Sweets</button>
+                  <button
+                    type="submit"
+                    onClick={handlesnacksbutton}
+                    style={{ backgroundColor: `${modalbutton.backgroundColo}` }}
+                  >
+                    {snacksvalue}
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={handleCigarettesbutton}
+                    style={{
+                      backgroundColor: `${backgcCigarettes.backgroundColo}`,
+                    }}
+                  >
+                    {valueCigarettes}
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={handleDrinksbutton}
+                    style={{
+                      backgroundColor: `${backColodrinks.backgroundColo}`,
+                    }}
+                  >
+                    {drinksvalue}
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={handleSweetsbutton}
+                    style={{
+                      backgroundColor: `${backColsweets.backgroundColo}`,
+                    }}
+                  >
+                    {sweetsvalue}
+                  </button>
                 </div>
                 <br></br>
                 <div className="modal_buttons">
-                  <button type="submit">Coffe</button>
-                  <button type="submit">Soda</button>
-                  <button type="submit">Bakes</button>
+                  <button
+                    type="submit"
+                    onClick={handleCoffebutton}
+                    style={{
+                      backgroundColor: `${backColCoffe.backgroundColo}`,
+                    }}
+                  >
+                    {coffeValue}
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={handleSodabutton}
+                    style={{ backgroundColor: `${backColSoda.backgroundColo}` }}
+                  >
+                    {sodaValue}
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={handleBakesbutton}
+                    style={{
+                      backgroundColor: `${backColBakes.backgroundColo}`,
+                    }}
+                  >
+                    {bakesValue}
+                  </button>
                 </div>
                 <br></br>
               </div>
               <div class="modall-footer" style={{ border: "none" }}>
-                <button type="button">Done</button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss={modalDismisButton}
+                  onClick={handledismissbutoon}
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  onClick={handlemodalbuttton}
+                  data-bs-dismiss="modal"
+                >
+                  Done
+                </button>
               </div>
             </div>
           </div>
